@@ -18,13 +18,13 @@ app.use(session({
   secret: process.env.SESSION_SECRET, // secret key
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Set secure: true if using HTTPS
+  cookie: { secure: true } // Set secure: true if using HTTPS
 }));
 
 
 app.use(cors(
   {
-    origin: 'http://localhost:3000', // You can also specify your frontend URL here
+    origin: 'http://moudwork.netlify.app', // You can also specify your frontend URL here
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
   }
