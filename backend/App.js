@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const bcrypt = require('bcrypt');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -13,7 +15,7 @@ const authMiddleware = require('./middleware/authMiddleware');
 
 
 app.use(session({
-  secret: 'aZ7J!9pR2X&6mT#5V^w1@Lf4bQ3N*v8Yz0K%dG$c7h2xF!1WqL#8M&5N^4zH9Tp@0b3V%yJ6R7dG*Zc2X', // secret key
+  secret: process.env.SESSION_SECRET, // secret key
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // Set secure: true if using HTTPS
@@ -191,7 +193,7 @@ db.query(query, [newsId], (err, results) => {
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.MYSQL_PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
