@@ -8,7 +8,7 @@ const AddNewsPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/news/add', { title, content });
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/news/add`, { title, content });
       console.log(response.data);
       alert('News post added successfully');
       setTitle('');

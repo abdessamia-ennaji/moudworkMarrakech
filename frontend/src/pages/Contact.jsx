@@ -41,7 +41,7 @@ function Contact(props){
               setSuccessMessage('');
   
               // Send request to server
-              const response = await axios.post('http://localhost:5000/submitcontact', { name, email, subject, message });
+              const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/submitcontact`, { name, email, subject, message });
   
               // If successful, display success message
               if (response.status === 200) {

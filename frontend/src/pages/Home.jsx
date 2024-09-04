@@ -17,7 +17,7 @@ function Home(){
   useEffect(() => {
     const trackVisit = async () => {
         try {
-            await axios.post('http://localhost:5000/api/analytic/track-visit');
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/analytic/track-visit`);
         } catch (error) {
             console.error('Error tracking visit', error);
         }

@@ -21,7 +21,7 @@ function Projects() {
 
   useEffect(() => {
     // Fetch the latest project
-    axios.get('http://localhost:5000/api/projects/latest')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects/latest`)
       .then(response => {
         if (response.data.length > 0) {
           setLatestProjects(response.data[0]);
@@ -32,7 +32,7 @@ function Projects() {
       });
 
     // Fetch the three latest projects
-    axios.get('http://localhost:5000/api/projects/latestthree')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects/latestthree`)
       .then(response => {
         if (response.data.length > 0) {
           setLatestThreeProjects(response.data);
@@ -131,8 +131,8 @@ function Projects() {
                 {filteredProjects.map(project => (
                   <div className="col-lg-4 col-md-6 shuffle-item" key={project.id} data-title={project.title}>
                     <div className="project-img-container">
-                      <a className="gallery-popup" href={`http://localhost:5000/${project.image_url}`}>
-                        <img className="img-fluid" src={`http://localhost:5000/${project.image_url}`} alt={project.title} />
+                      <a className="gallery-popup" href={`${process.env.REACT_APP_BACKEND_URL}/${project.image_url}`}>
+                        <img className="img-fluid" src={`${process.env.REACT_APP_BACKEND_URL}/${project.image_url}`} alt={project.title} />
                         <span className="gallery-icon">
                           <i className="fa fa-plus" />
                         </span>

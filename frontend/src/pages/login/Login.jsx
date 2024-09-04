@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setErrorMessage('');
-      const response = await axios.post('http://localhost:5000/login', { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, { username, password });
   
       if (response.status === 200) {
         console.log('Login successful:', response.data); // Debugging line

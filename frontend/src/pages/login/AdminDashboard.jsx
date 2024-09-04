@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   const [countProjects, setCountProjects] = useState(0);
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/messages/count')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/messages/count`)
       .then(response => {
         setCountMessage(response.data.total_messages);
         
@@ -21,7 +21,7 @@ const AdminDashboard = () => {
         
       });
 
-      axios.get('http://localhost:5000/api/analytic/get-visits')
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/analytic/get-visits`)
       .then(response => {
         setCountVisit(response.data);
         
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
         
       });
 
-      axios.get('http://localhost:5000/api/news')
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
       .then(response => {
         setCountNews(response.data);
         
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
         
       });
 
-      axios.get('http://localhost:5000/api/projects')
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects`)
       .then(response => {
         setCountProjects(response.data);
         

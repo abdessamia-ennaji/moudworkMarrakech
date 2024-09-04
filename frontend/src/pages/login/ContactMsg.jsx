@@ -10,7 +10,7 @@ const ContactMsg = () => {
 
   useEffect(() => {
     // Fetch all messages from the backend
-    axios.get('http://localhost:5000/contactmsg')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/contactmsg`)
       .then(response => {
         setMessages(response.data);
         setLoading(false);
@@ -22,7 +22,7 @@ const ContactMsg = () => {
       });
 
     // Fetch the total message count from the backend
-    axios.get('http://localhost:5000/messages/count')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/messages/count`)
       .then(response => {
         setCount(response.data.total_messages);
         setLoading(false);
@@ -36,7 +36,7 @@ const ContactMsg = () => {
 
   const handleRemove = (id) => {
     // Handle message removal here
-    axios.delete(`http://localhost:5000/contactmsg/${id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/contactmsg/${id}`)
       .then(() => {
         setMessages(messages.filter(message => message.id !== id));
         setCount(count - 1);

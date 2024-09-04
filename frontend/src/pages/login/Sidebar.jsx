@@ -22,7 +22,7 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    axios.post('http://localhost:5000/logout')
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`)
       .then(response => {
         if (response.status === 200) {
           // Clear any stored user data in the frontend (e.g., from local storage or state)

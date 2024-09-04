@@ -16,7 +16,7 @@ const ProjectsAdmin = () => {
   }, []);
 
   const fetchProjects = () => {
-    axios.get('http://localhost:5000/api/projects')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/projects`)
       .then(response => {
         setProjects(response.data);
       })
@@ -33,7 +33,7 @@ const ProjectsAdmin = () => {
     formData.append('content', content);
     if (image) formData.append('image', image);
 
-    const url = editingProjects ? `http://localhost:5000/api/projects/${editingProjects.id}` : 'http://localhost:5000/api/projects';
+    const url = editingProjects ? `${process.env.REACT_APP_BACKEND_URL}/api/projects/${editingProjects.id}` : `${process.env.REACT_APP_BACKEND_URL}/api/projects`;
     const method = editingProjects ? 'put' : 'post';
 
     axios({ method, url, data: formData })
@@ -50,7 +50,7 @@ const ProjectsAdmin = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/projects/${id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/projects/${id}`)
       .then(() => {
         setProjects(Projects.filter(item => item.id !== id));
       })
@@ -110,7 +110,7 @@ const ProjectsAdmin = () => {
           <div className="news-list">
             {Projects.map(item => (
               <div key={item.id} className="news-card">
-                {item.image_url && <img src={`http://localhost:5000/${item.image_url}`} alt={item.title} className="news-image" />}
+                {item.image_url && <img src={`${process.env.REACT_APP_BACKEND_URL}/${item.image_url}`} alt={item.title} className="news-image" />}
                 
                 <h2 className="news-title">
                 {item.title}

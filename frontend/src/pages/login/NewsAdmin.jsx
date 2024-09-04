@@ -18,7 +18,7 @@ const NewsAdmin = () => {
   }, []);
 
   const fetchNews = () => {
-    axios.get('http://localhost:5000/api/news')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/news`)
       .then(response => {
         setNews(response.data);
       })
@@ -39,7 +39,7 @@ const NewsAdmin = () => {
     formData.append('news_date', newsDate); // Ensure the correct field name is used
     if (image) formData.append('image', image);
 
-    const url = editingNews ? `http://localhost:5000/api/news/${editingNews.id}` : 'http://localhost:5000/api/news';
+    const url = editingNews ? `${process.env.REACT_APP_BACKEND_URL}/api/news/${editingNews.id}` : `${process.env.REACT_APP_BACKEND_URL}/api/news`;
     const method = editingNews ? 'put' : 'post';
 
     axios({ method, url, data: formData })
@@ -60,7 +60,7 @@ const NewsAdmin = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/news/${id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/news/${id}`)
       .then(() => {
         setNews(news.filter(item => item.id !== id));
       })
@@ -161,7 +161,7 @@ const NewsAdmin = () => {
   <div className="news-list">
     {news.map(item => (
       <div key={item.id} className="news-card">
-        {item.image_url && <img src={`http://localhost:5000/${item.image_url}`} alt={item.title} className="news-image" />}
+        {item.image_url && <img src={`${process.env.REACT_APP_BACKEND_URL}/${item.image_url}`} alt={item.title} className="news-image" />}
         <div className="news-meta">
           <span className="news-date">{new Date(item.news_date).toLocaleDateString()}</span>
         </div>

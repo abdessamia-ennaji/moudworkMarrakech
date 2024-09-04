@@ -15,7 +15,7 @@ function News() {
 
   useEffect(() => {
     // Fetch the latest news article
-    axios.get('http://localhost:5000/api/news/latest')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/news/latest`)
       .then(response => {
         if (response.data.length > 0) {
           setLatestNews(response.data[0]); // Set the first item if array
@@ -26,7 +26,7 @@ function News() {
       });
 
     // Fetch the three latest news articles
-    axios.get('http://localhost:5000/api/news/latestthree')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/news/latestthree`)
       .then(response => {
         if (response.data.length > 0) {
           setLatestThreeNews(response.data); // Set the latest three news
@@ -40,7 +40,7 @@ function News() {
   useEffect(() => {
     if (latestNews) {
       // Fetch comments for the selected news article
-      axios.get(`http://localhost:5000/api/news/${latestNews.id}/comments`)
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/news/${latestNews.id}/comments`)
         .then(response => {
           setComments(response.data);
         })
@@ -52,7 +52,7 @@ function News() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:5000/api/news/${latestNews.id}/comments`, newComment)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/news/${latestNews.id}/comments`, newComment)
       .then(response => {
         setComments([...comments, { ...newComment, comment_date: new Date().toISOString() }]);
         setNewComment({ author: '', content: '' });
@@ -108,7 +108,7 @@ function News() {
             <div className="col-lg-8 mb-5 mb-lg-0">
               <div className="post-content post-single">
                 <div className="post-media post-image">
-                  <img loading="lazy" src={`http://localhost:5000/${latestNews.image_url}`} className="img-fluid" alt="post-image" />
+                  <img loading="lazy" src={`${process.env.REACT_APP_BACKEND_URL}/${latestNews.image_url}`} className="img-fluid" alt="post-image" />
                 </div>
                 <div className="post-body">
                   <div className="entry-header">
@@ -215,7 +215,7 @@ function News() {
                     {displayedNews.map((news, index) => (
                       <li key={index} className="d-flex align-items-center">
                         <div className="posts-thumb">
-                          <a href="#"><img loading="lazy" alt="img" src={`http://localhost:5000/${news.image_url}`} /></a>
+                          <a href="#"><img loading="lazy" alt="img" src={`${process.env.REACT_APP_BACKEND_URL}/${news.image_url}`} /></a>
                         </div>
                         <div className="post-info">
                           <h4 className="entry-title">
