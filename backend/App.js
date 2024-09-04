@@ -24,7 +24,7 @@ app.use(session({
 
 app.use(cors(
   {
-    origin: 'https://moudwork.netlify.app', // You can also specify your frontend URL here
+    origin: 'https://moudwork.netlify.app/', // You can also specify your frontend URL here
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
   }
