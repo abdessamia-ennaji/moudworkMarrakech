@@ -77,7 +77,7 @@ function Pricing(){
             </div>
             {/* Features end */}
             <div className="plan-action">
-              <a href="https://wa.me/+212702393173?text=Building%20Remodels%0A89.9%20/%20Month%0A%0AComprehensive%20Project%20Management%0APre-construction%20Planning%0AOn-site%20Supervision%0AQuality%20Control%20Inspections%0ASchedule%20Management%20and%20Claims%0APhased%20Project%20Development" className="btn btn-dark" target="_blank">
+              <a href="https://wa.me/+212660435648?text=Building%20Remodels%0A89.9%20/%20Month%0A%0AComprehensive%20Project%20Management%0APre-construction%20Planning%0AOn-site%20Supervision%0AQuality%20Control%20Inspections%0ASchedule%20Management%20and%20Claims%0APhased%20Project%20Development" className="btn btn-dark" target="_blank">
               {t("Pricing.orderNow")}
               </a>
             </div>
@@ -108,7 +108,7 @@ function Pricing(){
             </div>
             {/* Features end */}
             <div className="plan-action">
-              <a href="https://wa.me/+212702393173?text=Renovation%20Projects%0A179.9%20/%20Month%0A%0ADedicated%20Project%20Management%0ADetailed%20Feasibility%20Studies%0AExpert%20On-site%20Representation%0AThorough%20Quality%20Inspections%0AComprehensive%20Schedule%20Management%0AStrategic%20Project%20Phasing" className="btn btn-primary" target="_blank">
+              <a href="https://wa.me/+212660435648?text=Renovation%20Projects%0A179.9%20/%20Month%0A%0ADedicated%20Project%20Management%0ADetailed%20Feasibility%20Studies%0AExpert%20On-site%20Representation%0AThorough%20Quality%20Inspections%0AComprehensive%20Schedule%20Management%0AStrategic%20Project%20Phasing" className="btn btn-primary" target="_blank">
               {t("Pricing.orderNow")}
               </a>
             </div>
@@ -139,7 +139,7 @@ function Pricing(){
             </div>
             {/* Features end */}
             <div className="plan-action">
-            <a href="https://wa.me/+212702393173?text=Home%20Construction%0A279.9%20/%20Month%0A%0AExpert%20Project%20Management%0AIn-depth%20Feasibility%20Analysis%0AFull%20On-site%20Supervision%0AStringent%20Quality%20Control%0AEffective%20Schedule%20and%20Claims%20Management%0AComplete%20Project%20Phasing" className="btn btn-dark" target="_blank">
+            <a href="https://wa.me/+212660435648?text=Home%20Construction%0A279.9%20/%20Month%0A%0AExpert%20Project%20Management%0AIn-depth%20Feasibility%20Analysis%0AFull%20On-site%20Supervision%0AStringent%20Quality%20Control%0AEffective%20Schedule%20and%20Claims%20Management%0AComplete%20Project%20Phasing" className="btn btn-dark" target="_blank">
 
             {t("Pricing.orderNow")}
               </a>
