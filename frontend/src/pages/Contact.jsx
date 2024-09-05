@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 function Contact(props){
     
-    
+   
 
       const {t} = useTranslation()
 
@@ -87,10 +87,9 @@ function Contact(props){
                     <div className="container">
                     <div className="row text-center">
                         <div className="col-12">
-                            <h2 className="section-title">{t("Contact.reachingOurOffice")}</h2>
-                            <h3 className="section-sub-title">{t("Contact.findOurLocation")}</h3>
+                        <h2 className="section-title">{t("Contact.reachingOurOffice")}</h2>
+                        <h3 className="section-sub-title">{t("Contact.findOurLocation")}</h3>
                         </div>
-                    </div>
                     </div>
 
                     
@@ -136,7 +135,6 @@ function Contact(props){
                     {/* 1st row end */}
                     <div className="gap-60" />
                     <div className="google-map">
-                    <div className="google-map">
                     <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', height: 'auto' }}>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d848.892414753697!2d-8.03625409257834!3d31.67299138709751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1725541632834!5m2!1sen!2sus"
@@ -146,6 +144,9 @@ function Contact(props){
                             referrerPolicy="no-referrer-when-downgrade"
                         />
                     </div>
+                    
+                        
+
                     </div>
 
 
