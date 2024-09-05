@@ -92,7 +92,9 @@ function  Navbar(){
                                     <div className="info-box">
                                         <div className="info-box-content">
                                         <p className="info-box-title">{t("Navbar.EmailUs")}</p>
-                                        <p className="info-box-subtitle">office@Moudwork.com</p>
+                                        <p className="info-box-subtitle">
+                                        <a href= "mailto: moudwork.sarl@gmail.com"> moudwork.sarl@gmail.com </a>
+                                        </p>
                                         </div>
                                     </div>
                                     </li>
