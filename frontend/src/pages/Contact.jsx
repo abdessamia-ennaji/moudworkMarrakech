@@ -87,9 +87,10 @@ function Contact(props){
                     <div className="container">
                     <div className="row text-center">
                         <div className="col-12">
-                        <h2 className="section-title">{t("Contact.reachingOurOffice")}</h2>
-                        <h3 className="section-sub-title">{t("Contact.findOurLocation")}</h3>
+                            <h2 className="section-title">{t("Contact.reachingOurOffice")}</h2>
+                            <h3 className="section-sub-title">{t("Contact.findOurLocation")}</h3>
                         </div>
+                    </div>
                     </div>
 
                     
