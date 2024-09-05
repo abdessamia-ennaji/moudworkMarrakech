@@ -7,21 +7,7 @@ import { useTranslation } from "react-i18next";
 
 function Contact(props){
     
-    useEffect(() => {
-        const mapScript = document.createElement('script');
-        mapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU";
-        mapScript.defer = true;
-        document.head.appendChild(mapScript);
-        const mapJsScript = document.createElement('script');
-        mapJsScript.src = "../assets/plugins/google-map/map.js";
-        mapJsScript.defer = true;
-        document.head.appendChild(mapJsScript);
     
-        return () => {
-          document.head.removeChild(mapScript);
-          document.head.removeChild(mapJsScript);
-        };
-      }, []);
 
       const {t} = useTranslation()
 
@@ -149,14 +135,16 @@ function Contact(props){
                     {/* 1st row end */}
                     <div className="gap-60" />
                     <div className="google-map">
-                        <div
-                        id="map"
-                        className="map"
-                        data-latitude="31.672977"
-                        data-longitude="-8.036045"
-                        data-marker="./assets/images/marker.png"
-                        data-marker-name="Moudwork"
+                    <div className="google-map">
+                    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', height: 'auto' }}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d848.892414753697!2d-8.03625409257834!3d31.67299138709751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1725541632834!5m2!1sen!2sus"
+                            style={{ border: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
                         />
+                    </div>
                     </div>
 
 
