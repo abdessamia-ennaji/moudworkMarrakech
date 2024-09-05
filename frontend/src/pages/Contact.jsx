@@ -114,7 +114,7 @@ function Contact(props){
                             </span>
                             <div className="ts-service-box-content">
                             <h4>{t("Contact.emailus")}</h4>
-                            <p>office@Moudwork.com</p>
+                            <p><a href= "mailto: moudwork.sarl@gmail.com"> moudwork.sarl@gmail.com </a></p>
                             </div>
                         </div>
                         </div>
@@ -126,7 +126,7 @@ function Contact(props){
                             </span>
                             <div className="ts-service-box-content">
                             <h4>{t("Contact.callus")}</h4>
-                            <p>(+212) 660-435648</p>
+                            <p><a href="tel:+212660435648">(+212) 660-435648</a></p>
                             </div>
                         </div>
                         </div>

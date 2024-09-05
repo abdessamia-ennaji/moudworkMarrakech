@@ -84,7 +84,9 @@ function  Navbar(){
                                     <div className="info-box">
                                         <div className="info-box-content">
                                         <p className="info-box-title">{t("Navbar.CallUs")}</p>
-                                        <p className="info-box-subtitle">(+212) 660-435648</p>
+                                        <p className="info-box-subtitle">
+                                        <a href="tel:+212660435648">(+212) 660-435648</a>
+                                        </p>
                                         </div>
                                     </div>
                                     </li>
@@ -102,7 +104,7 @@ function  Navbar(){
                                     <div className="info-box last">
                                         <div className="info-box-content">
                                         <p className="info-box-title">{t("Navbar.GlobalCertificate")}</p>
-                                        <p className="info-box-subtitle">ISO 9001:2017</p>
+                                        <p className="info-box-subtitle">ICE 002729844000050</p>
                                         </div>
                                     </div>
                                     </li>
