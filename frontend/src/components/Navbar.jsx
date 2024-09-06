@@ -25,23 +25,23 @@ function  Navbar(){
                             <div className="col-lg-4 col-md-4 top-social text-center text-md-right">
                             <ul className="list-unstyled">
                                 <li>
-                                <a title="Facebook" href="https://facebbok.com" target="_blank" >
+                                <a title="Facebook" href="https://facebbok.com" target="_blank" rel="noreferrer noopener" >
                                     <span className="social-icon">
                                     <i className="fab fa-facebook-f" />
                                     </span>
                                 </a>
-                                <a title="Twitter" href="https://twitter.com/" target="_blank">
+                                <a title="Twitter" href="https://twitter.com/" target="_blank" rel="noreferrer noopener">
                                     <span className="social-icon">
                                     <i className="fab fa-twitter" />
                                     </span>
                                 </a>
-                                <a title="Instagram" href="https://instagram.com/" target="_blank">
+                                <a title="Instagram" href="https://instagram.com/" target="_blank" rel="noreferrer noopener">
                                     <span className="social-icon">
                                     <i className="fab fa-instagram" />
                                     </span>
                                 </a>
 
-                                <a title="Linkdin" href="https://github.com/" target="_blank">
+                                <a title="Linkdin" href="https://github.com/" target="_blank" rel="noreferrer noopener">
                                     <span className="social-icon">
                                     <i className="fab fa-github" />
                                     </span>
