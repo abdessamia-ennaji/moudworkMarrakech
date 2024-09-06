@@ -6,14 +6,14 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { useTranslation } from "react-i18next";
 
 function News() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [latestNews, setLatestNews] = useState(null);
   const [latestThreeNews, setLatestThreeNews] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({ author: '', content: '' });
 
-  // Reference to the news section
-  const newsRef = useRef(null);
+  // Reference to the image
+  const imageRef = useRef(null);
 
   useEffect(() => {
     // Fetch the latest news article
@@ -22,7 +22,7 @@ function News() {
         if (response.data.length > 0) {
           setLatestNews(response.data[0]); // Set the first item if array
         }
-      })  
+      })
       .catch(error => {
         console.error('Error fetching latest news:', error);
       });
@@ -50,9 +50,9 @@ function News() {
           console.error('Error fetching comments:', error);
         });
 
-      // Scroll to news section when latest news is updated
-      if (newsRef.current) {
-        newsRef.current.scrollIntoView({ behavior: 'smooth' });
+      // Scroll to the image when latest news is updated
+      if (imageRef.current) {
+        imageRef.current.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }, [latestNews]); // Dependency array includes latestNews
@@ -112,7 +112,7 @@ function News() {
             <div className="col-lg-8 mb-5 mb-lg-0">
               <div className="post-content post-single">
                 <div className="post-media post-image">
-                  <img loading="lazy" src={`${process.env.REACT_APP_BACKEND_URL}/${latestNews.image_url}`} className="img-fluid" alt="post-image" />
+                  <img loading="lazy" src={`${process.env.REACT_APP_BACKEND_URL}/${latestNews.image_url}`} className="img-fluid" alt="post-image" ref={imageRef} />
                 </div>
                 <div className="post-body">
                   <div className="entry-header">
