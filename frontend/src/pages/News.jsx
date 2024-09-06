@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useTranslation } from "react-i18next";
+
 function News() {
-  const {t} = useTranslation()
+  const {t} = useTranslation();
   const [latestNews, setLatestNews] = useState(null);
   const [latestThreeNews, setLatestThreeNews] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({ author: '', content: '' });
 
-
+  // Reference to the news section
+  const newsRef = useRef(null);
 
   useEffect(() => {
     // Fetch the latest news article
@@ -47,6 +49,11 @@ function News() {
         .catch(error => {
           console.error('Error fetching comments:', error);
         });
+
+      // Scroll to news section when latest news is updated
+      if (newsRef.current) {
+        newsRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, [latestNews]); // Dependency array includes latestNews
 
@@ -66,11 +73,8 @@ function News() {
 
   const displayedNews = (latestThreeNews && Array.isArray(latestThreeNews)) ? latestThreeNews.slice(0, 3) : [];
 
-
-  
   const handleRecentPostClick = (news) => {
     setLatestNews(news);
-    
   };
   return (
     <>
