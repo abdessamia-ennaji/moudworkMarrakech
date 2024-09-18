@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const db = require('../models/db'); // Ensure this is a promise-based connection (like db.promise())
+const db = require('../models/db');
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
@@ -16,84 +16,94 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Create a news article
-router.post('/', upload.single('image'), async (req, res) => {
-  const { title, content, quote, news_date, quote_source, additional_content } = req.body;
+router.post('/', upload.single('image'), (req, res) => {
+  const { title, content, quote, news_date, quote_source, additional_content } = req.body; // Ensure correct field names
   const imageUrl = req.file ? req.file.path : null;
 
   const sql = 'INSERT INTO news (title, content, quote, quote_source, additional_content, news_date, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
-  try {
-    await db.query(sql, [title, content, quote, quote_source, additional_content, news_date, imageUrl]);
-    res.status(201).send('News article created');
-  } catch (err) {
-    console.error('Error inserting news:', err);
-    res.status(500).send('Error inserting news');
-  }
+  db.query(sql, [title, content, quote,quote_source, additional_content, news_date, imageUrl], (err, result) => {
+    if (err) {
+      console.error('Error inserting news:', err);
+      res.status(500).send('Error inserting news');
+    } else {
+      res.status(201).send('News article created');
+    }
+  });
 });
 
 // Get all news articles
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   const sql = 'SELECT * FROM news ORDER BY created_at DESC';
-  try {
-    const [results] = await db.query(sql);
-    res.json(results);
-  } catch (err) {
-    console.error('Error fetching news:', err);
-    res.status(500).send('Error fetching news');
-  }
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching news:', err);
+      res.status(500).send('Error fetching news');
+    } else {
+      res.json(results);
+    }
+  });
 });
 
 // Update a news article
-router.put('/:id', upload.single('image'), async (req, res) => {
+router.put('/:id', upload.single('image'), (req, res) => {
   const { id } = req.params;
-  const { title, content, quote, news_date, quote_source, additional_content } = req.body;
+  const { title, content, quote, news_date, quote_source, additional_content} = req.body;
   const imageUrl = req.file ? req.file.path : null;
 
-  const sql = 'UPDATE news SET title = ?, content = ?, quote = ?, quote_source = ?, additional_content = ?, news_date = ?, image_url = ? WHERE id = ?';
-  try {
-    await db.query(sql, [title, content, quote, quote_source, additional_content, news_date, imageUrl, id]);
-    res.status(200).send('News article updated');
-  } catch (err) {
-    console.error('Error updating news:', err);
-    res.status(500).send('Error updating news');
-  }
+  const sql = 'UPDATE news SET title = ?, content = ?, quote = ?,quote_source = ?,additional_content = ?, news_date = ?, image_url = ? WHERE id = ?';
+  db.query(sql, [title, content, quote, quote_source, additional_content, news_date, imageUrl, id], (err, result) => {
+    if (err) {
+      console.error('Error updating news:', err);
+      res.status(500).send('Error updating news');
+    } else {
+      res.status(200).send('News article updated');
+    }
+  });
 });
 
 // Delete a news article
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   const sql = 'DELETE FROM news WHERE id = ?';
-  try {
-    await db.query(sql, [id]);
-    res.status(200).send('News article deleted');
-  } catch (err) {
-    console.error('Error deleting news:', err);
-    res.status(500).send('Error deleting news');
-  }
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error('Error deleting news:', err);
+      res.status(500).send('Error deleting news');
+    } else {
+      res.status(200).send('News article deleted');
+    }
+  });
 });
 
-// Get the latest news article
-router.get('/latest', async (req, res) => {
-  const sql = 'SELECT * FROM news ORDER BY news_date DESC LIMIT 1';
-  try {
-    const [results] = await db.query(sql);
-    res.json(results);
-  } catch (err) {
-    console.error('Error fetching latest news:', err);
-    res.status(500).send('Error fetching latest news');
-  }
-});
 
-// Get the latest three news articles
-router.get('/latestthree', async (req, res) => {
-  const sql = 'SELECT * FROM news ORDER BY news_date DESC LIMIT 3';
-  try {
-    const [results] = await db.query(sql);
-    res.json(results);
-  } catch (err) {
-    console.error('Error fetching latest news:', err);
-    res.status(500).send('Error fetching latest news');
-  }
-});
+
+
+///latest news
+router.get('/latest', (req, res) => {
+    const sql = 'SELECT * FROM news ORDER BY news_date DESC LIMIT 1';
+    db.query(sql, (err, results) => {
+      if (err) {
+        console.error('Error fetching latest news:', err);
+        res.status(500).send('Error fetching latest news');
+      } else {
+        res.json(results);
+      }
+    });
+  });
+
+router.get('/latestthree', (req, res) => {
+    const sql = 'SELECT * FROM news ORDER BY news_date DESC LIMIT 3';
+    db.query(sql, (err, results) => {
+      if (err) {
+        console.error('Error fetching latest news:', err);
+        res.status(500).send('Error fetching latest news');
+      } else {
+        res.json(results);
+      }
+    });
+  });
+
+
 
 module.exports = router;
