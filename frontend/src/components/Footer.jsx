@@ -89,7 +89,7 @@ function Footer(){
                     <div className="copyright-info">
                         <span>
                         {t("Footer.copyright")}{" "}
-                            <a href="#">Abdessamad Hirane</a>
+                            <a href="https://github.com/abdessamia-ennaji">Abdessamia Ennaji</a>
                         </span>
                     </div>
                 </div>
